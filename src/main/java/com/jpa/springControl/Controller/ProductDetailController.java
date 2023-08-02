@@ -20,5 +20,10 @@ public class ProductDetailController {
     public ProductDetailDto productDetailPage(@PathVariable @Valid Long id) {
 
         return mainPageService.DetailProduct(id);
+
+        // 기본적으로 로직 자체의 특이점은 없다
+        // 그저 dto를 활용해서 패치조인을 어떻게 짜느냐가 관건이다
+        // 크게 본다면 댓글과 비슷한 비즈니스로직 이다
+        //
     }
 }
