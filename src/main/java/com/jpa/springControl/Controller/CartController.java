@@ -14,10 +14,10 @@ public class CartController {
 
     private final CartService cartService;
 
-    @GetMapping("/api/{id}/cart")
-    public List<CartListDto> CartList(@PathVariable Long id, @RequestBody CartListDto cartListDto) {
+    @GetMapping("/api/cart/{userid}/")
+    public List<CartListDto> CartList(@PathVariable Long userid, @RequestBody CartListDto cartListDto) {
 
-        return cartService.CartListLogic(id);
+        return cartService.CartListLogic(userid);
 
     }
 

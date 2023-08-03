@@ -15,7 +15,7 @@ public class Member {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private Long userid;
 
     @Column
     private String nickname;
