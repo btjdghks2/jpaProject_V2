@@ -1,11 +1,13 @@
 package com.jpa.springControl.Service;
 
 import com.jpa.springControl.Dto.CartDto.CartListDto;
+import com.jpa.springControl.Dto.CartDto.CreateCartDto;
 import com.jpa.springControl.Repository.CartRepository;
 import com.jpa.springControl.Repository.MemberRepository;
 import com.jpa.springControl.domain.Cart;
 import com.jpa.springControl.domain.Member;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -43,7 +45,21 @@ public class CartService {
     }
 
 
-    public List<CartListDto> CreateCartListLogic(Long id) {
+
+    public CreateCartDto CreateCartListLogic(Long userid,CreateCartDto createCartDto) {
+
+        //일단 유저 사용자를 찾아야 함, 저 매개변수를 cart에 검색해서 목록을 불러오고
+        Cart cart = cartRepository.findByUserId(userid);
+        createCartDto = createCartDto.setUserid();
+        createCartDto = createCartDto.setPrice();
+        createCartDto = createCartDto.setImagelink();
+        // 지금 문제점은 getter setter 를 조정해야 한다는 것
+
+
+
+
+
+        // 카트 엔티티에 추가 해야 함
 
         return null;
     }
