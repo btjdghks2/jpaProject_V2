@@ -13,4 +13,8 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
     // 그러므로 멤버로 시작되어 멤버에 같은 아이디 값을 가진 아이템 목록을 가져와야 한다
     // 멤버 + 조인 + 카트 가 되는 구도를 만들면 된다
     //
+
+    @Query("select m form member m fetch join m.cart c")
+    List<Cart> CreateCartListsql;
+
 }

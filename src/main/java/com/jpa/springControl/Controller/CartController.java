@@ -2,7 +2,6 @@ package com.jpa.springControl.Controller;
 
 import com.jpa.springControl.Dto.CartDto.CartListDto;
 import com.jpa.springControl.Dto.CartDto.CreateCartDto;
-import com.jpa.springControl.Repository.CartRepository;
 import com.jpa.springControl.Service.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -22,9 +21,11 @@ public class CartController {
 
     }
 
-    @PostMapping("/api/{userid}/cart/new")
+    @PostMapping("/api/cart/{userid}/new")
     public CreateCartDto CreateCartList(@PathVariable Long userid, @RequestBody CreateCartDto createCartDto){
         return cartService.CreateCartListLogic(userid);
+
+
     }
 
     @PutMapping("/api/{id}/cart/update")

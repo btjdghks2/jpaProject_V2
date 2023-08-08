@@ -15,11 +15,19 @@ public class Cart {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private Long userid;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "price")
+    private Product price;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "imagelink")
+    private Product imagelink;
 
 
     // 주문 상품 갯수
