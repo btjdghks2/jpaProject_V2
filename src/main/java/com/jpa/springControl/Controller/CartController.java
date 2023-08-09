@@ -21,10 +21,9 @@ public class CartController {
 
     }
 
-    @PostMapping("/api/cart/{userid}/new")
-    public CreateCartDto CreateCartList(@PathVariable Long userid, @RequestBody CreateCartDto createCartDto){
-        return cartService.CreateCartListLogic(userid);
-
+    @PostMapping("/api/cart/new")
+    public CreateCartDto CreateCartList(@RequestBody CreateCartDto createCartDto){
+        return cartService.CreateCartListLogic(createCartDto);
 
     }
 

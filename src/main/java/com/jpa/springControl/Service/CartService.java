@@ -6,9 +6,7 @@ import com.jpa.springControl.Repository.CartRepository;
 import com.jpa.springControl.Repository.MemberRepository;
 import com.jpa.springControl.domain.Cart;
 import com.jpa.springControl.domain.Member;
-import com.jpa.springControl.domain.Product;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -47,18 +45,18 @@ public class CartService {
 
 
 
-    public CreateCartDto CreateCartListLogic(CreateCartDto createCartDto) {
+    public CreateCartDto CreateCartListLogic( CreateCartDto createCartDto) {
+
         Cart cart = new Cart();
-        cart.setUserid(createCartDto.getUserid().getUserid());
+        cart.setUserid(createCartDto.getUserid());
         cart.setPrice(createCartDto.getPrice());
         cart.setImagelink(createCartDto.getImagelink());
-
-
-
-        return  CreateCartDto;
+        cartRepository.save(cart);
+        return CreateCartDto.from(cart);
     }
 
     public List<CartListDto> UpdateCartListLogic(Long id) {
+
         return null;
     }
 

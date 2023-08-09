@@ -11,21 +11,30 @@ import lombok.Setter;
 @Getter
 public class CreateCartDto {
 
-    private Cart userid;
+    private Long userid;
     private Product price;
     private Product imagelink;
 
-    public CreateCartDto(Cart userid, Product price, Product imagelink) {
+    public CreateCartDto() {
         this.userid = userid;
         this.price = price;
         this.imagelink = imagelink;
     }
 
-    public Cart getUserid() {
+    public static CreateCartDto from(Cart cart){
+        CreateCartDto createCartDto = new CreateCartDto();
+        createCartDto.setUserid(cart.getUserid());
+        createCartDto.setPrice(cart.getPrice());
+        createCartDto.setImagelink(cart.getImagelink());
+
+        return createCartDto;
+    }
+
+    public Long getUserid() {
         return userid;
     }
 
-    public void setUserid(Cart cart) {
+    public void setUserid(Long cart) {
         this.userid = userid;
     }
 

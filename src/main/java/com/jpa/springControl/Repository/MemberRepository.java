@@ -14,7 +14,6 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
     // 멤버 + 조인 + 카트 가 되는 구도를 만들면 된다
     //
 
-    @Query("select m form member m fetch join m.cart c")
-    List<Cart> CreateCartListsql;
+
 
 }
