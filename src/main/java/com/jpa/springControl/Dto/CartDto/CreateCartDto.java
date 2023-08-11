@@ -3,12 +3,9 @@ package com.jpa.springControl.Dto.CartDto;
 import com.jpa.springControl.domain.Cart;
 import com.jpa.springControl.domain.Product;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+
 
 @Data
-@Setter
-@Getter
 public class CreateCartDto {
 
     private Long userid;

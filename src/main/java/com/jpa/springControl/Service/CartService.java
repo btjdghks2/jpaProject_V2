@@ -2,6 +2,7 @@ package com.jpa.springControl.Service;
 
 import com.jpa.springControl.Dto.CartDto.CartListDto;
 import com.jpa.springControl.Dto.CartDto.CreateCartDto;
+import com.jpa.springControl.Dto.CartDto.UpdateCartDto;
 import com.jpa.springControl.Repository.CartRepository;
 import com.jpa.springControl.Repository.MemberRepository;
 import com.jpa.springControl.domain.Cart;
@@ -44,18 +45,25 @@ public class CartService {
     }
 
 
-
-    public CreateCartDto CreateCartListLogic( CreateCartDto createCartDto) {
+    @Transactional
+    public Cart CreateCartListLogic(CreateCartDto createCartDto) {
 
         Cart cart = new Cart();
         cart.setUserid(createCartDto.getUserid());
         cart.setPrice(createCartDto.getPrice());
         cart.setImagelink(createCartDto.getImagelink());
-        cartRepository.save(cart);
-        return CreateCartDto.from(cart);
+
+
+        return  cartRepository.save(cart);
     }
 
-    public List<CartListDto> UpdateCartListLogic(Long id) {
+    @Transactional
+    public Cart UpdateCartListLogic(UpdateCartDto updateCartDto) {
+
+        Cart cart = new Cart();
+
+
+
 
         return null;
     }

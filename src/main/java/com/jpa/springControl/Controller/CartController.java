@@ -3,6 +3,7 @@ package com.jpa.springControl.Controller;
 import com.jpa.springControl.Dto.CartDto.CartListDto;
 import com.jpa.springControl.Dto.CartDto.CreateCartDto;
 import com.jpa.springControl.Service.CartService;
+import com.jpa.springControl.domain.Cart;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,7 +23,7 @@ public class CartController {
     }
 
     @PostMapping("/api/cart/new")
-    public CreateCartDto CreateCartList(@RequestBody CreateCartDto createCartDto){
+    public Cart CreateCartList(@RequestBody CreateCartDto createCartDto){
         return cartService.CreateCartListLogic(createCartDto);
 
     }
