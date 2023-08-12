@@ -31,6 +31,48 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	testImplementation 'org.springframework.security:spring-security-test'
+}
+
+def webappDir = "$projectDir/src/main/React/frontapp"
+
+sourceSets {
+	main {
+		resources {
+			srcDirs = ["$webappDir/build", "$projectDir/src/main/resources"]
+		}
+	}
+}
+
+processResources {
+	dependsOn "buildReact"
+}
+
+task buildReact(type: Exec) {
+	dependsOn "installReact"
+	workingDir "$webappDir"
+	inputs.dir "$webappDir"
+	group = BasePlugin.BUILD_GROUP
+	if (System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('windows')) {
+		commandLine "npm.cmd", "run-script", "build"
+	} else {
+		commandLine "npm", "run-script", "build"
+	}
+}
+
+task installReact(type: Exec) {
+	workingDir "$webappDir"
+	inputs.dir "$webappDir"
+	group = BasePlugin.BUILD_GROUP
+	if (System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('windows')) {
+		commandLine "npm.cmd", "audit", "fix"
+		commandLine 'npm.cmd', 'install'
+	} else {
+		commandLine "npm", "audit", "fix"
+		commandLine 'npm', 'install'
+	}
 }
 
 tasks.named('test') {
